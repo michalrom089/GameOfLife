@@ -1,0 +1,7 @@
+[pytest]
+testpaths =
+    test
+python_paths = 
+    life
+log_cli=true
+log_level=NOTSET
