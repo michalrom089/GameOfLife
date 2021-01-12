@@ -19,7 +19,7 @@ class Life:
         is_alive = self.board.is_alive(x, y)
 
         shouldLive = not is_alive and population == 3 \
-                        or (is_alive and (population == 2 or population == 3))                
+            or (is_alive and (population == 2 or population == 3))
 
         future_state = PointState.Alive if shouldLive else PointState.Dead
 
@@ -27,7 +27,8 @@ class Life:
         if self.debug and is_alive != shouldLive:
             current_state = PointState.Alive if is_alive else PointState.Dead
 
-            print(f"X:{x},Y:{y} | {current_state.name} -> {future_state.name} | population:{population}")
+            print(
+                f"X:{x},Y:{y} | {current_state.name} -> {future_state.name} | population:{population}")
 
         return future_state
 
@@ -40,7 +41,7 @@ class Life:
 
         print(new_board)
         self.board.populate(new_board)
-        
+
         if(self.debug and not self.debug_tick):
             self.debug_tick = True
         else:

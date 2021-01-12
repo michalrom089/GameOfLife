@@ -3,6 +3,7 @@ import numpy as np
 from life.life import Life
 from life.board import Board, PointState
 
+
 class View:
     BACKGROUND_COLOR = (220, 220, 220)
     ALIVE_COLOR = (0, 0, 0)
@@ -29,8 +30,8 @@ class View:
         self.print_game()
         pygame.display.flip()
 
-    def run(self):        
-        self.running=True
+    def run(self):
+        self.running = True
         while self.running:
             # Look at every event in the queue
             for event in pygame.event.get():
@@ -42,7 +43,7 @@ class View:
                         self.emulation_step = True
                     elif event.key == pygame.K_r:
                         print("emulation run")
-                        self.emulation_started = True  
+                        self.emulation_started = True
                     elif event.key == pygame.K_s:
                         print("emulation stopped")
                         self.emulation_started = False
@@ -50,7 +51,6 @@ class View:
                         print("escape pressed")
                         self.running = False
 
-                        
                 elif event.type == pygame.QUIT:
                     self.running = False
             if self.emulation_started or self.emulation_step:
@@ -61,9 +61,9 @@ class View:
 
             pygame.display.flip()
             self.clock.tick(30)
-    
+
     def print_game(self):
-        for idx,val in np.ndenumerate(self.life.get_state()):
+        for idx, val in np.ndenumerate(self.life.get_state()):
             color = self.ALIVE_COLOR if val == PointState.Alive else self.DEAD_COLOR
             self.draw_rect(idx[0], idx[1], color)
 
@@ -71,4 +71,5 @@ class View:
         rect_x = (x*self.board_cell_size)+1
         rect_y = (y*self.board_cell_size)+1
         rect_size = self.board_cell_size - 2
-        pygame.draw.rect(self.screen, color, (rect_x, rect_y, rect_size, rect_size))
+        pygame.draw.rect(self.screen, color,
+                         (rect_x, rect_y, rect_size, rect_size))
