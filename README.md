@@ -17,3 +17,19 @@ python run.py
 pip install -r requirements.txt
 pytest test
 ```
+
+## Examples
+
+### The R-pentomino
+
+---
+
+Starting shape:
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Game_of_life_fpento.svg/82px-Game_of_life_fpento.svg.png)
+
+---
+
+Emulation:
+
+![](./emulations/r_pentomino.gif)

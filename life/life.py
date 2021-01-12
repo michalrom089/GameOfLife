@@ -39,7 +39,6 @@ class Life:
             for y in range(self.board.height):
                 new_board[y, x] = self.decide(x, y)
 
-        print(new_board)
         self.board.populate(new_board)
 
         if(self.debug and not self.debug_tick):

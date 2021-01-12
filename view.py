@@ -1,5 +1,6 @@
 import pygame
 import numpy as np
+import time
 from life.life import Life
 from life.board import Board, PointState
 
@@ -11,15 +12,15 @@ class View:
 
     def __init__(self, board, board_cell_size, debug=False):
         pygame.init()
-        screen_width = board.width * board_cell_size
-        screen_height = board.height * board_cell_size
+        self.screen_width = board.width * board_cell_size
+        self.screen_height = board.height * board_cell_size
         self.board_cell_size = board_cell_size
 
         # setup game
         self.life = Life(board, debug=debug)
 
         # setup display
-        self.screen = pygame.display.set_mode((screen_width, screen_height))
+        self.screen = pygame.display.set_mode((self.screen_width, self.screen_height))
         self.screen.fill(self.BACKGROUND_COLOR)
 
         self.clock = pygame.time.Clock()
@@ -44,6 +45,7 @@ class View:
                     elif event.key == pygame.K_r:
                         print("emulation run")
                         self.emulation_started = True
+                        time.sleep(2)
                     elif event.key == pygame.K_s:
                         print("emulation stopped")
                         self.emulation_started = False
@@ -53,6 +55,7 @@ class View:
 
                 elif event.type == pygame.QUIT:
                     self.running = False
+
             if self.emulation_started or self.emulation_step:
                 self.emulation_step = False
 
@@ -60,7 +63,8 @@ class View:
                 self.print_game()
 
             pygame.display.flip()
-            self.clock.tick(30)
+
+            self.clock.tick(60)
 
     def print_game(self):
         for idx, val in np.ndenumerate(self.life.get_state()):
@@ -73,3 +77,4 @@ class View:
         rect_size = self.board_cell_size - 2
         pygame.draw.rect(self.screen, color,
                          (rect_x, rect_y, rect_size, rect_size))
+

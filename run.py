@@ -8,8 +8,8 @@ BOARD_HEIGHT = 101
 BOARD_CENTER_X = math.floor(BOARD_WIDTH / 2)
 BOARD_CENTER_Y = math.floor(BOARD_HEIGHT / 2)
 
-BOARD_CELL_SIZE = 15
-DEBUG = True
+BOARD_CELL_SIZE = 10
+DEBUG = False
 
 board = Board(BOARD_HEIGHT, BOARD_WIDTH)
 population = board.get_empty_population()
