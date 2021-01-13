@@ -14,7 +14,22 @@ DEBUG = False
 board = Board(BOARD_HEIGHT, BOARD_WIDTH)
 population = board.get_empty_population()
 
-shape = [(0, 0), (-1, 0), (0, 1), (0, -1), (1, -1)]
+
+# oscillator 1
+# shape = [(-1,0),(0,0),(1,0)]
+
+# glider 1
+# shape = [(0,-1),(1,0),(-1,1),(0,1),(1,1)]
+
+# die hard
+shape = [(-3,0),(-3,-1),(-4,-1),(1,0),(2,0),(3,0),(2,-2)]
+
+# spaceship
+# shape = [(0,0),(1,0),(2,0),(3,0),(0,-1),(0,-2),(1,-3),(4,-3),(4,-1)]
+
+# r-pentomino
+# shape = [(0, 0), (-1, 0), (0, 1), (0, -1), (1, -1)]
+
 for x, y in shape:
     population[BOARD_CENTER_X+x, BOARD_CENTER_Y+y] = PointState.Alive
 board.populate(population)
